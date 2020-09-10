@@ -6,21 +6,27 @@ namespace word_wizard_sim
 {
     class Enemy
     {
+        public string name;
         public int max_hp;
-        public int max_mana;
         public int cur_hp;
-        public int cur_mana;
+        public int dmg;
+        public string attk_text;
 
 
-        public void Init()
+        public void restore()
         {
             cur_hp = max_hp;
             cur_mana = max_mana;
         }
+        public void attack(Player pl)
+        {
+            Console.WriteLine(this.name + attk_text + Convert.ToString(dmg) + "dmg");
+            pl.cur_hp -= this.dmg;
+        }
     }
 
-    class enemy_dict
+    class Enemies
     {
-        
+        public Enemy rat = new Enemy{name = "Rat", max_hp = 20, dmg = 5, attk_text = "bites you and does "};
     }
 }
